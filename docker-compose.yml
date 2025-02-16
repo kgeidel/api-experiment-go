@@ -1,0 +1,9 @@
+services:
+  go-api-demo:
+    build:
+      context: .
+    container_name: go-api-demo
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app:rw
