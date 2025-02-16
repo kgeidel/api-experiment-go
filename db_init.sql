@@ -1,5 +1,7 @@
 CREATE DATABASE goapi;
 
+\c goapi;
+
 CREATE TABLE product (
     id serial primary key,
     name varchar(255),

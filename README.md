@@ -21,8 +21,10 @@ psql -f db_init.sql
 echo DB_NAME=goapi > .env
 echo DB_USER=[YOUR DB USER NAME] >> .env
 echo DB_PASSWORD=[YOUR DB PASSWORD] >> .env
+echo POSTGRES_PASSWORD=[Repeat same password, this one is for docker] >> .env
 echo DB_HOST=localhost >> .env
-echo DB_PORT=5432 >> .env
+echo DB_PORT=5433 >> .env
+echo PGPORT=5433 >> .env
 
 # Run the docker container
 docker compose up
