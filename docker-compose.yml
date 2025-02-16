@@ -1,18 +1,4 @@
-volumes:
-  data:
-
 services:
-  database:
-    image: postgres:alpine
-    restart: always
-    env_file: .env
-    expose:
-      - "5432"
-    ports:
-      - "5432:5432"
-    volumes:
-      - data:/var/lib/postgresql/data
-
   go-api-demo:
     build:
       context: .

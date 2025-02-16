@@ -5,8 +5,27 @@ A demonstration of how a containerized RESTful API might be implemented in Go.
 ### Replication
 
 ```shell
-# Clone the repo
-git clone git@github.com:kgeidel/api-experiment-go.git
+# Clone and enter the repo...
+git clone git@github.com:kgeidel/api-experiment-go.git && cd api-experiment-go
+
+# Add required ENV vars (warning! will wipe an existing .env in this dir)
+echo DB_NAME=goapi > .env
+echo DB_USER=[YOUR DB USER NAME] >> .env
+echo DB_PASSWORD=[YOUR DB PASSWORD] >> .env
+echo DB_HOST=localhost >> .env
+echo DB_PORT=5432 >> .env
+
+# Initialize the DB (requires postgres or pg based RDS)
+psql -f db_init.sql
+```
+
+```shell
+# Launch the go container with...
+docker compose up
+
+# ---OR---
+
+# run the go package manually
 
 # Install Go dependencies to root folder
 cd api-experiment-go
@@ -14,20 +33,8 @@ go get github.com/gorilla/mux
 go get github.com/joho/godotenv
 go get github.com/lib/pq
 
-# Initialize the DB (requires postgres or pg based RDS)
-psql -f db_init.sql
-
-# Add required ENV vars (warning! will wipe an existing .env in this dir)
-echo DB_NAME=goapi > .env
-echo DB_USER=[YOUR DB USER NAME] >> .env
-echo DB_PASSWORD=[YOUR DB PASSWORD] >> .env
-echo POSTGRES_PASSWORD=[Repeat same password, this one is for docker] >> .env
-echo DB_HOST=localhost >> .env
-echo DB_PORT=5433 >> .env
-echo PGPORT=5433 >> .env
-
-# Run the docker container
-docker compose up
+# Run the go package
+go run main.go
 ```
 
 ### Troubleshooting
