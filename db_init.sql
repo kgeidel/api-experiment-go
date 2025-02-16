@@ -1,3 +1,5 @@
+CREATE DATABASE goapi;
+
 CREATE TABLE product (
     id serial primary key,
     name varchar(255),
@@ -5,4 +7,3 @@ CREATE TABLE product (
     price float,
     available_flag bool
 );
-
